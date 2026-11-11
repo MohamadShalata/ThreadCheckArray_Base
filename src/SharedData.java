@@ -16,8 +16,3 @@ public class SharedData {
     public boolean getFlag() { return flag; }
     public void setFlag(boolean flag) { this.flag = flag; }
 }
-//kamal miiii
-//hi
-// koo
-//ka hi
-//mohammed
