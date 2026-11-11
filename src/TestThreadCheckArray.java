@@ -1,16 +1,30 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main driver class that initializes an ArrayList{@code <Integer>},
+ * spawns concurrent threads to check subset sum conditions, and prints the results.
+ */
 public class TestThreadCheckArray {
+
+    /**
+     * Main entry point of the program. Reads input from the console,
+     * initializes shared data, and coordinates the worker threads.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
             Thread thread1, thread2;
             System.out.println("Enter array size");
-            int num  = input.nextInt();
-            int[] array = new int[num];
+            int num = input.nextInt();
+
+            ArrayList<Integer> array = new ArrayList<>();
             System.out.println("Enter numbers for array");
 
-            for (int index = 0; index < num; index++)
-                array[index] = input.nextInt();
+            for (int index = 0; index < num; index++) {
+                array.add(input.nextInt());
+            }
 
             System.out.println("Enter number");
             num = input.nextInt();
@@ -31,10 +45,11 @@ public class TestThreadCheckArray {
                 System.out.println("Sorry");
                 return;
             }
-            System.out.println("Solution for b : " + sd.getB() + ",n = " + sd.getArray().length);
+            System.out.println("Solution for b : " + sd.getB() + ",n = " + sd.getArray().size());
             System.out.print("I:    ");
-            for(int index = 0; index < sd.getArray().length ; index++)
+            for (int index = 0; index < sd.getArray().size(); index++) {
                 System.out.print(index + "    ");
+            }
             System.out.println();
             System.out.print("A:    ");
             for (int index : sd.getArray()) {
@@ -45,13 +60,18 @@ public class TestThreadCheckArray {
                     counter--;
                     if (index == 0) break;
                 }
-                for (int i = 0; i < counter; i++) System.out.print(" ");
+                for (int i = 0; i < counter; i++) {
+                    System.out.print(" ");
+                }
             }
             System.out.println();
             System.out.print("C:    ");
             for (boolean index : sd.getWinArray()) {
-                if (index) System.out.print("1    ");
-                else System.out.print("0    ");
+                if (index) {
+                    System.out.print("1    ");
+                } else {
+                    System.out.print("0    ");
+                }
             }
         }
     }
